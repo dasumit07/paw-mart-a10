@@ -14,15 +14,14 @@ const Navbar = () => {
       <ul
         tabIndex="-1"
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        <li><a>Item 1</a></li>
-        <li>
-          <a>Parent</a>
-          <ul className="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </li>
-        <li><a>Item 3</a></li>
+        <NavLink className={({ isActive }) =>
+        `hover:scale-105 transition ease-in-out ${
+          isActive ? 'text-orange-500 font-bold' : 'hover:text-orange-400'
+        }`}>Home</NavLink>
+      <NavLink className={({ isActive }) =>
+        `hover:scale-105 transition ease-in-out ${
+          isActive ? 'text-orange-500 font-bold' : 'hover:text-orange-400'
+        }`}>Pets / Supplies</NavLink>
       </ul>
     </div>
     <NavLink className={"flex items-center bg-linear-to-r from-orange-400 to-orange-300 text-transparent bg-clip-text "}><IoPawSharp className='text-orange-500 text-4xl mr-2'></IoPawSharp><span className=' text-2xl font-bold'>Paw</span><span className=' text-3xl font-bold'>Mart</span></NavLink>

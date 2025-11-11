@@ -24,7 +24,7 @@ const Card = ({item}) => {
       <span className="text-lg font-bold  bg-linear-to-r from-orange-600 to-orange-300 text-transparent bg-clip-text">Price : {item.price} TK</span>
     </div>
 
-    <Link>
+    <Link to={`/pets/${item._id}`}>
     <button className="w-full bg-orange-400 hover:bg-linear-to-r from-orange-700 to-orange-500 text-white font-semibold  hover:scale-105 transition ease-in-out rounded-2xl py-2 cursor-pointer">
       See Details
     </button></Link>

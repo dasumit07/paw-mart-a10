@@ -49,15 +49,15 @@ const Navbar = () => {
         `hover:scale-105 transition ease-in-out ${
           isActive ? 'text-orange-500 font-bold' : 'hover:text-orange-400'
         }`}>Pets / Supplies</NavLink>
-      <NavLink  className={({ isActive }) =>
+      <NavLink to={"/addListing"} className={({ isActive }) =>
         `hover:scale-105 transition ease-in-out ${
           isActive ? 'text-orange-500 font-bold' : 'hover:text-orange-400'
         }`}>Add Listing</NavLink>
-      <NavLink className={({ isActive }) =>
+      <NavLink to={"/myListings"} className={({ isActive }) =>
         `hover:scale-105 transition ease-in-out ${
           isActive ? 'text-orange-500 font-bold' : 'hover:text-orange-400'
         }`}>My Listings</NavLink>
-      <NavLink className={({ isActive }) =>
+      <NavLink to={"/myOrders"} className={({ isActive }) =>
         `hover:scale-105 transition ease-in-out ${
           isActive ? 'text-orange-500 font-bold' : 'hover:text-orange-400'
         }`}>My Orders</NavLink>
@@ -88,15 +88,15 @@ const Navbar = () => {
         `hover:scale-105 transition ease-in-out ${
           isActive ? 'text-orange-500 font-bold' : 'hover:text-orange-400'
         }`}>Pets / Supplies</NavLink>
-      <NavLink className={({ isActive }) =>
+      <NavLink to={"/addListing"} className={({ isActive }) =>
         `hover:scale-105 transition ease-in-out ${
           isActive ? 'text-orange-500 font-bold' : 'hover:text-orange-400'
         }`}>Add Listing</NavLink>
-      <NavLink className={({ isActive }) =>
+      <NavLink to={"myListings"} className={({ isActive }) =>
         `hover:scale-105 transition ease-in-out ${
           isActive ? 'text-orange-500 font-bold' : 'hover:text-orange-400'
         }`}>My Listings</NavLink>
-      <NavLink className={({ isActive }) =>
+      <NavLink to={"/myOrders"} className={({ isActive }) =>
         `hover:scale-105 transition ease-in-out ${
           isActive ? 'text-orange-500 font-bold' : 'hover:text-orange-400'
         }`}>My Orders</NavLink>
@@ -123,7 +123,8 @@ const Navbar = () => {
       className='h-12 w-12 rounded-full hover:scale-105 transition ease-in-out duration-500'
       /></div>
   <ul tabIndex="-1" className="dropdown-content menu bg-orange-50 rounded-box z-1 w-52 p-2 shadow-sm">
-    <Link><li className='bg-linear-to-r from-orange-400 to-orange-300 text-transparent bg-clip-text font-bold text-center'>{user.displayName}</li></Link>
+    <li className='bg-linear-to-r from-orange-400 to-orange-300 text-transparent bg-clip-text font-bold text-center'>{user.displayName}</li>
+    <li className='bg-linear-to-r from-orange-400 to-orange-300 text-transparent bg-clip-text font-bold text-center'>{user.email}</li>
   </ul>
 </div>
       <button onClick={handleSignout} className="btn bg-orange-400 hover:bg-linear-to-r from-orange-700 to-orange-500 text-white font-semibold  hover:scale-105 transition ease-in-out rounded-2xl ">

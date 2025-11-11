@@ -8,7 +8,7 @@ const Footer = () => {
         <footer className="footer sm:footer-horizontal bg-linear-to-r from-orange-600 to-orange-50 text-neutral-content p-10">
   <aside>
     <Link to={"/"} ><IoPawSharp className='text-5xl'></IoPawSharp></Link>
-    <p>
+    <p className='text-black md:text-white'>
         <span className='text-2xl font-semibold mb-2 '>PawMart</span>
         <br />
       <span>“PawMart connects local pet owners and buyers for adoption and pet

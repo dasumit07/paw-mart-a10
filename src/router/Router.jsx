@@ -5,6 +5,10 @@ import PetsSuplies from "../pages/PetsSuplies";
 import Login from "../pages/Login";
 import Signup from "../pages/SignUp";
 import Notfound from "../pages/NotFound";
+import AddListing from "../pages/AddListing";
+import MyListings from "../pages/Mylistings";
+import MyOrders from "../pages/MyOrders";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 
 export const router = createBrowserRouter([
@@ -18,7 +22,8 @@ export const router = createBrowserRouter([
         },
         {
           path: "/pets",
-          element: <PetsSuplies></PetsSuplies>
+          element: <PetsSuplies></PetsSuplies>,
+          loader:()=> fetch('http://localhost:3000/pets')
         },
         {
           path:"/login",
@@ -27,6 +32,24 @@ export const router = createBrowserRouter([
         {
           path: "/signup",
           element: <Signup></Signup>
+        },
+        {
+          path: "/addListing",
+          element: <PrivateRoute>
+            <AddListing></AddListing>
+          </PrivateRoute>
+        },
+        {
+          path: "/myListings",
+          element: <PrivateRoute>
+            <MyListings></MyListings>
+          </PrivateRoute>
+        },
+        {
+          path: "/myOrders",
+          element: <PrivateRoute>
+            <MyOrders></MyOrders>
+          </PrivateRoute>
         }
     ],
   },

@@ -19,7 +19,7 @@ const Details = () => {
                 address: e.target.address.value,
                 date: e.target.date.value,
                 phone: e.target.phone.value,
-                notes: e.target.phone.value
+                notes: e.target.notes.value
             }
             console.log(formdata)
             fetch('http://localhost:3000/orders', {
@@ -152,7 +152,7 @@ const Details = () => {
         <input
           type="number"
           name='quantity'
-          
+          defaultValue={'1'}
           className="w-full px-4 py-2 border rounded-lg bg-gray-100 "
         />
       </div>

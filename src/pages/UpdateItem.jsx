@@ -18,7 +18,15 @@ const UpdateItem = () => {
             email: e.target.email.value,
             date: e.target.date.value
         }
-        fetch(`http://localhost:3000/pets/${data._id}`, {
+        Swal.fire({
+  title: "Do you want to save the changes?",
+  showDenyButton: true,
+  showCancelButton: true,
+  confirmButtonText: "Save",
+  denyButtonText: `Don't save`
+}).then((result) => {
+  if (result.isConfirmed) {
+    fetch(`http://localhost:3000/pets/${data._id}`, {
             method: "PUT",
             headers:{
                 "Content-Type": "application/json",
@@ -40,6 +48,10 @@ const UpdateItem = () => {
         .catch(err =>{
             console.log(err)
         })
+  } else if (result.isDenied) {
+    Swal.fire("Changes are not saved", "", "info");
+  }
+});
 
     }
     return (

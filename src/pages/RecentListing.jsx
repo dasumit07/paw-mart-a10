@@ -4,7 +4,7 @@ import Card from './Card';
 
 const RecentListing = ({data}) => {
     const items = data
-    console.log(items)
+   
     return (
         <div className='w-11/12 mx-auto mt-8'>
             <h1

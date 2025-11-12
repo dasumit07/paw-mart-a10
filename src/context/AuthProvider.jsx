@@ -30,7 +30,7 @@ useEffect(() => {
 }, []);
 
 if(loading){
-    <Loading></Loading>
+  return  <Loading></Loading>
 }
 
     return <AuthContext value={authInfo}>{children}</AuthContext>

@@ -72,7 +72,12 @@ export const router = createBrowserRouter([
           </PrivateRoute>,
           loader:({params})=> fetch(`http://localhost:3000/pets/${params.id}`),
           hydrateFallbackElement: <Loading></Loading>
-        }
+        },
+        {
+           path: "/category/:category",
+           element: <PetsSuplies></PetsSuplies>,
+           loader: ({ params }) => fetch(`http://localhost:3000/category?category=${params.category}`)
+}
     ],
   },
   {

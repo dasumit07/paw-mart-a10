@@ -5,6 +5,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 
 import { auth } from '../firebase/firebase.config';
 import { AuthContext } from './Authcontext';
+import Loading from '../pages/Loading';
 
 const AuthProvider = ({children}) => {
 
@@ -27,6 +28,10 @@ useEffect(() => {
     unsubscribe();
     }
 }, []);
+
+if(loading){
+    <Loading></Loading>
+}
 
     return <AuthContext value={authInfo}>{children}</AuthContext>
 };

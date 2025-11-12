@@ -11,6 +11,7 @@ import MyOrders from "../pages/MyOrders";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Details from "../pages/Details";
 import UpdateItem from "../pages/UpdateItem";
+import Loading from "../pages/Loading";
 
 
 export const router = createBrowserRouter([
@@ -21,12 +22,14 @@ export const router = createBrowserRouter([
         {
             index: true,
             element:<Home></Home>,
-            loader:()=> fetch('http://localhost:3000/latest-items')
+            loader:()=> fetch('http://localhost:3000/latest-items'),
+            hydrateFallbackElement: <Loading></Loading>
         },
         {
           path: "/pets",
           element: <PetsSuplies></PetsSuplies>,
-          loader:()=> fetch('http://localhost:3000/pets')
+          loader:()=> fetch('http://localhost:3000/pets'),
+          hydrateFallbackElement: <Loading></Loading>
         },
         {
           path:"/login",
@@ -53,7 +56,8 @@ export const router = createBrowserRouter([
           element: <PrivateRoute>
             <UpdateItem></UpdateItem>
           </PrivateRoute>,
-          loader:({params})=> fetch(`http://localhost:3000/pets/${params.id}`)
+          loader:({params})=> fetch(`http://localhost:3000/pets/${params.id}`),
+          hydrateFallbackElement: <Loading></Loading>
         },
         {
           path: "/myOrders",
@@ -66,7 +70,8 @@ export const router = createBrowserRouter([
           element: <PrivateRoute>
             <Details></Details>
           </PrivateRoute>,
-          loader:({params})=> fetch(`http://localhost:3000/pets/${params.id}`)
+          loader:({params})=> fetch(`http://localhost:3000/pets/${params.id}`),
+          hydrateFallbackElement: <Loading></Loading>
         }
     ],
   },

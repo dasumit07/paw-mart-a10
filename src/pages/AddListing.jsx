@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { AuthContext } from '../context/Authcontext';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router';
@@ -6,6 +6,9 @@ import { useNavigate } from 'react-router';
 const AddListing = () => {
     const {user} = useContext(AuthContext)
     const navigate = useNavigate();
+    useEffect(()=>{
+            document.title = "Add Listing | PawMart"
+        },[]);
 
     const handleAddListing = (e) =>{
         e.preventDefault();

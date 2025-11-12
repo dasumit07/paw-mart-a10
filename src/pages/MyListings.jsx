@@ -5,7 +5,10 @@ import Swal from 'sweetalert2';
 
 const MyListings = () => {
     const {user, setLoading} = useContext(AuthContext);
-    const [Listings, setListings] = useState([])
+    const [Listings, setListings] = useState([]);
+    useEffect(()=>{
+            document.title = "My Listings | PawMart"
+        },[]);
 
     useEffect(()=>{
         fetch(`http://localhost:3000/myListings?email=${user.email}`)

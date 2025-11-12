@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link, useLoaderData, useNavigate } from 'react-router';
 import { AuthContext } from '../context/Authcontext';
 import Swal from 'sweetalert2';
@@ -7,6 +7,9 @@ const Details = () => {
     const data = useLoaderData()
     const {user} = useContext(AuthContext)
     const navigate = useNavigate();
+    useEffect(()=>{
+            document.title = "Details | PawMart"
+        },[]);
     const handleOrder = (e) =>{
             e.preventDefault();
             const formdata = {

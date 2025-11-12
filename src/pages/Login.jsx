@@ -1,5 +1,5 @@
 import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router';
@@ -19,6 +19,9 @@ const navigate = useNavigate();
 const location = useLocation();
 const from = location.state || '/';
 const {setUser, setLoading} = useContext(AuthContext);
+useEffect(()=>{
+        document.title = "Log In | PawMart"
+    },[]);
     const handleSubmit = (e) => {
         e.preventDefault();
         

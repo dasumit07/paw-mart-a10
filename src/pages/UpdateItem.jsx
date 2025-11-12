@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLoaderData, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 
 const UpdateItem = () => {
     const data = useLoaderData();
      const navigate = useNavigate();
-
+useEffect(()=>{
+        document.title = "Update Details | PawMart"
+    },[]);
     const handleUpdate = (e) =>{
         e.preventDefault();
         const formdata = {

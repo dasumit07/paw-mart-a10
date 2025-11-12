@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useNavigate } from 'react-router';
@@ -16,6 +16,9 @@ const Signup = () => {
     const [errorName, setErrorName] = useState('');
     const navigate = useNavigate();
     const {setUser, setLoading} = useContext(AuthContext);
+    useEffect(()=>{
+            document.title = "Sign Up | PawMart"
+        },[]);
     const handleSubmit = (e) => {
         e.preventDefault();
         const name = e.target.name.value;

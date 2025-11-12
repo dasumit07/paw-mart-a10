@@ -5,7 +5,10 @@ import autoTable from "jspdf-autotable";
 
 const MyOrders = () => {
     const {user, setLoading} = useContext(AuthContext);
-        const [orders, setOrders] = useState([])
+        const [orders, setOrders] = useState([]);
+        useEffect(()=>{
+                document.title = "My Orders | PawMart"
+            },[]);
     
         useEffect(()=>{
             fetch(`http://localhost:3000/myOrders?email=${user.email}`)

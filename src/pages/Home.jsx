@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Banner from './Banner';
 import Category from './Category';
 import RecentListing from './RecentListing';
@@ -8,6 +8,9 @@ import { useLoaderData } from 'react-router';
 
 const Home = () => {
     const data = useLoaderData()
+    useEffect(()=>{
+        document.title = "Home | PawMart"
+    },[]);
     return (
         <div>
             <Banner></Banner>

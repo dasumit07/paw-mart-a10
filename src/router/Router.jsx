@@ -10,6 +10,7 @@ import MyListings from "../pages/Mylistings";
 import MyOrders from "../pages/MyOrders";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Details from "../pages/Details";
+import UpdateItem from "../pages/UpdateItem";
 
 
 export const router = createBrowserRouter([
@@ -46,6 +47,13 @@ export const router = createBrowserRouter([
           element: <PrivateRoute>
             <MyListings></MyListings>
           </PrivateRoute>
+        },
+        {
+          path: "/update/:id",
+          element: <PrivateRoute>
+            <UpdateItem></UpdateItem>
+          </PrivateRoute>,
+          loader:({params})=> fetch(`http://localhost:3000/pets/${params.id}`)
         },
         {
           path: "/myOrders",

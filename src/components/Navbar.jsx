@@ -9,6 +9,7 @@ import { LuLogIn } from 'react-icons/lu';
 import { MoonLoader } from 'react-spinners';
 import { AuthContext } from '../context/Authcontext';
 import Swal from 'sweetalert2';
+import { MdOutlineDriveFileRenameOutline } from 'react-icons/md';
 
 
 const Navbar = () => {
@@ -112,25 +113,27 @@ const Navbar = () => {
     </ul>
     }
   </div>
-  <div data-aos="fade-left" className="navbar-end">
+  <div className="navbar-end">
     {loading ? <MoonLoader size={30} /> :  user? 
     <div className='flex items-center gap-1 md:gap-4'>
       
-      <div className="dropdown dropdown-hover">
-  <div tabIndex={0}><img
+      <div className="dropdown dropdown-bottom dropdown-end">
+  <div tabIndex={0} role="button" className="m-1"><img
       src={user.photoURL ? user.photoURL : "https://via.placeholder.com/88"}
       alt='avatar'
       className='h-12 w-12 rounded-full hover:scale-105 transition ease-in-out duration-500'
       /></div>
-  <ul tabIndex="-1" className="dropdown-content menu bg-orange-50 rounded-box z-1 w-52 p-2 shadow-sm">
-    <li className='bg-linear-to-r from-orange-400 to-orange-300 text-transparent bg-clip-text font-bold text-center'>{user.displayName}</li>
-    <li className='bg-linear-to-r from-orange-400 to-orange-300 text-transparent bg-clip-text font-bold text-center'>{user.email}</li>
-  </ul>
-</div>
-      <button onClick={handleSignout} className="btn bg-orange-400 hover:bg-linear-to-r from-orange-700 to-orange-500 text-white font-semibold  hover:scale-105 transition ease-in-out rounded-2xl ">
+  <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+    <li className='bg-linear-to-r from-orange-400 to-orange-300 text-transparent bg-clip-text font-bold '> {user.displayName}</li>
+    <li className='bg-linear-to-r from-orange-400 to-orange-300 text-transparent bg-clip-text font-semibold mb-3'>{user.email}</li>
+    <li><button onClick={handleSignout} className="btn bg-orange-400 hover:bg-linear-to-r from-orange-700 to-orange-500 text-white font-semibold  hover:scale-105 transition ease-in-out rounded-2xl ">
       <LuLogIn />
         LogOut
-        </button>
+        </button></li>
+  </ul>
+  
+</div>
+      
     </div> : <Link to={"/login"}>
     <button className="btn bg-orange-400 hover:bg-linear-to-r from-orange-700 to-orange-500 text-white font-semibold  hover:scale-105 transition ease-in-out rounded-2xl">
       <LuLogIn />
@@ -143,3 +146,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

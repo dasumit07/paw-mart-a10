@@ -19,7 +19,8 @@ export const router = createBrowserRouter([
     children: [
         {
             index: true,
-            element:<Home></Home>
+            element:<Home></Home>,
+            loader:()=> fetch('http://localhost:3000/latest-items')
         },
         {
           path: "/pets",

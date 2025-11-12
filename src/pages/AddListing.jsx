@@ -69,7 +69,7 @@ const AddListing = () => {
           name='category'
           required
           className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400">
-            <option value="" disabled>Select Category</option>
+            <option value="">Select Category</option>
             <option value="Pets">Pets</option>
             <option value="Food">Pet Food</option>
             <option value="Accessories">Accessories</option>

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../context/Authcontext';
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
+import Swal from 'sweetalert2';
 
 const MyOrders = () => {
     const {user, setLoading} = useContext(AuthContext);
@@ -73,13 +74,45 @@ const MyOrders = () => {
 
   doc.save(`PawMart_MyOrders_${user.displayName || "user"}.pdf`);
 };
+
+const handleDelete = (id) =>{
+        Swal.fire({
+  title: "Are you sure?",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, cancel it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+fetch(`http://localhost:3000/orders/${id}`, {
+            method: "DELETE",
+           
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            setOrders(prevListings => prevListings.filter(item => item._id !== id));
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+
+    Swal.fire({
+      title: "Canceled!",
+      text: "Your order has been canceled.",
+      icon: "success"
+    });
+  }
+});
+    }
     return (
         <div className="max-w-6xl mx-auto px-4 py-10 mt-15">
       <h2 className="text-3xl font-bold text-center mb-8 bg-linear-to-r from-orange-600 to-orange-300 text-transparent bg-clip-text">
         🐾 My Orders
       </h2>
 
-      <div className="overflow-x-auto bg-white shadow-lg rounded-2xl">
+      <div className="overflow-x-auto border border-orange-50 backdrop-blur-xs  shadow-lg rounded-2xl">
         <table className="min-w-full table-auto text-sm text-gray-700">
           <thead className="bg-linear-to-r from-orange-600 to-orange-300 text-white uppercase text-sm">
             <tr>
@@ -90,6 +123,7 @@ const MyOrders = () => {
               <th className="py-3 px-4 text-left">Address</th>
               <th className="py-3 px-4 text-left">Date</th>
               <th className="py-3 px-4 text-center">Phone</th>
+              <th className="py-3 px-4 text-center">Actions</th>
             </tr>
           </thead>
 
@@ -100,13 +134,18 @@ const MyOrders = () => {
                   key={idx}
                   className="border-b hover:bg-orange-50 transition ease-in-out"
                 >
-                 <td className="py-3 px-4 font-medium">{item.product_name}</td>
-                  <td className="py-3 px-4 font-medium">{item.buyer_name}</td>
-                  <td className="py-3 px-4">{item.price}</td>
-                  <td className="py-3 px-4">{item.quantity} TK</td>
-                  <td className="py-3 px-4">{item.address}</td>
-                  <td className="py-3 px-4 text-gray-500">{item.date}</td>
-                  <td className="py-3 px-4 text-gray-500">{item.phone}</td>
+                 <td className="py-3 px-4 font-medium text-gray-400">{item.product_name}</td>
+                  <td className="py-3 px-4 font-medium text-gray-400">{item.buyer_name}</td>
+                  <td className="py-3 px-4 text-gray-400">{item.price} TK</td>
+                  <td className="py-3 px-4 text-gray-400">{item.quantity}</td>
+                  <td className="py-3 px-4 text-gray-400">{item.address}</td>
+                  <td className="py-3 px-4 text-gray-400">{item.date}</td>
+                  <td className="py-3 px-4 text-gray-400">{item.phone}</td>
+                  <td className="py-3 px-4 text-gray-500">
+                    <button onClick={() =>handleDelete(item._id)} className="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-700 transition">
+                      Cancel
+                    </button>
+                  </td>
                 </tr>
               ))
             ) : (

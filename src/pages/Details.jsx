@@ -12,19 +12,22 @@ const Details = () => {
         },[]);
     const handleOrder = (e) =>{
             e.preventDefault();
+            const quantity =
+    data.category.toLowerCase() === "pets"
+      ? 1
+      : Number(e.target.quantity.value) || 1;
             const formdata = {
                 buyer_name: e.target.buyer_name.value,
                 email: e.target.email.value,
                 product_id: e.target.product_id.value,
                 product_name: e.target.product_name.value,
-                quantity: e.target.quantity.value,
+                quantity: quantity,
                 price: e.target.price.value,
                 address: e.target.address.value,
                 date: e.target.date.value,
                 phone: e.target.phone.value,
                 notes: e.target.notes.value
             }
-            console.log(formdata)
             fetch('http://localhost:3000/orders', {
                 method: "POST",
                 headers:{
@@ -65,13 +68,13 @@ const Details = () => {
             Name: {data.name}
           </h1>
 
-          <p className="text-gray-600 mb-2">
+          <p className="text-gray-400 mb-2">
             <span className="font-semibold">Category:</span> {data.category}
           </p>
-          <p className="text-gray-600 mb-2">
+          <p className="text-gray-400 mb-2">
             <span className="font-semibold">Owner’s Email:</span> {data.email} 
           </p>
-          <p className="text-gray-600 mb-4">
+          <p className="text-gray-400 mb-4">
             <span className="font-semibold">Description:</span> {data.description}
           </p>
 
@@ -109,7 +112,7 @@ const Details = () => {
           name='buyer_name'
           value={user.displayName}
           readOnly
-          className="w-full px-4 py-2 border rounded-lg bg-gray-100 cursor-not-allowed"
+          className="w-full px-4 py-2 border rounded-lg  cursor-not-allowed"
         />
       </div>
 
@@ -121,7 +124,7 @@ const Details = () => {
           name='email'
           value={user.email}
           readOnly
-          className="w-full px-4 py-2 border rounded-lg bg-gray-100 cursor-not-allowed"
+          className="w-full px-4 py-2 border rounded-lg  cursor-not-allowed"
         />
       </div>
 
@@ -133,7 +136,7 @@ const Details = () => {
           name='product_id'
           value={data._id}
           readOnly
-          className="w-full px-4 py-2 border rounded-lg bg-gray-100 cursor-not-allowed"
+          className="w-full px-4 py-2 border rounded-lg  cursor-not-allowed"
         />
       </div>
 
@@ -145,7 +148,7 @@ const Details = () => {
           name='product_name'
           value={data.name}
           readOnly
-          className="w-full px-4 py-2 border rounded-lg bg-gray-100 cursor-not-allowed"
+          className="w-full px-4 py-2 border rounded-lg  cursor-not-allowed"
         />
       </div>
 
@@ -155,8 +158,13 @@ const Details = () => {
         <input
           type="number"
           name='quantity'
-          defaultValue={'1'}
-          className="w-full px-4 py-2 border rounded-lg bg-gray-100 "
+          required
+          defaultValue={data.category.toLowerCase() === "pets" ? "1" : ""}
+          disabled={data.category.toLowerCase() === "pets"}
+          className={`w-full px-4 py-2 border rounded-lg ${data.category.toLowerCase() === "pets"
+        ? " cursor-not-allowed"
+        : "focus:outline-none focus:ring-2 focus:ring-orange-400"
+    }`}
         />
       </div>
 
@@ -168,7 +176,7 @@ const Details = () => {
           name='price'
           value={data.price}
           
-          className="w-full px-4 py-2 border rounded-lg bg-gray-100 cursor-not-allowed "
+          className="w-full px-4 py-2 border rounded-lg  cursor-not-allowed "
         />
       </div>
 
@@ -179,6 +187,7 @@ const Details = () => {
           rows="3"
           name='address'
           placeholder="Enter your address"
+          required
           className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
         ></textarea>
       </div>
@@ -189,6 +198,7 @@ const Details = () => {
         <input
           type="date"
           name='date'
+          required
           className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
         />
       </div>
@@ -200,6 +210,7 @@ const Details = () => {
           type="tel"
           name='phone'
           placeholder="Enter your phone number"
+          required
           className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
         />
       </div>
@@ -234,7 +245,7 @@ const Details = () => {
         </div>
       </div>
 
-      <div className="text-center mt-12" data-aos="fade-up" data-aos-delay="600">
+      <div className="text-center mt-12">
         <Link to="/pets">
           <button className="btn bg-orange-400 hover:bg-linear-to-r from-orange-700 to-orange-500 text-white font-semibold  rounded-2xl py-2 hover:scale-105 transition ease-in-out">
             ← Go Back

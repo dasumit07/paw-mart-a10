@@ -58,7 +58,7 @@ fetch(`http://localhost:3000/pets/${id}`, {
         🐾 My Listings
       </h2>
 
-      <div className="overflow-x-auto bg-white shadow-lg rounded-2xl">
+      <div className="overflow-x-auto border border-orange-50 backdrop-blur-xs shadow-lg rounded-2xl">
         <table className="min-w-full table-auto text-sm text-gray-700">
           <thead className="bg-linear-to-r from-orange-600 to-orange-300 text-white uppercase text-sm">
             <tr>
@@ -86,11 +86,11 @@ fetch(`http://localhost:3000/pets/${id}`, {
                       className="w-14 h-14 rounded-xl object-cover"
                     />
                   </td>
-                  <td className="py-3 px-4 font-medium">{item.name}</td>
-                  <td className="py-3 px-4">{item.category}</td>
-                  <td className="py-3 px-4">{item.price} TK</td>
-                  <td className="py-3 px-4">{item.location}</td>
-                  <td className="py-3 px-4 text-gray-500">{item.email}</td>
+                  <td className="py-3 px-4 font-medium text-gray-400">{item.name}</td>
+                  <td className="py-3 px-4 text-gray-400">{item.category}</td>
+                  <td className="py-3 px-4 text-gray-400">{item.price} TK</td>
+                  <td className="py-3 px-4 text-gray-400">{item.location}</td>
+                  <td className="py-3 px-4 text-gray-400">{item.email}</td>
                   <td className="py-3 px-4 text-center flex justify-center gap-3">
                     <Link to={`/update/${item._id}`}>
                     <button className="px-3 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-700 transition">

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../context/Authcontext';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router';
@@ -6,16 +6,18 @@ import { useNavigate } from 'react-router';
 const AddListing = () => {
     const {user} = useContext(AuthContext)
     const navigate = useNavigate();
+    const [category, setCategory] = useState("");
     useEffect(()=>{
             document.title = "Add Listing | PawMart"
         },[]);
 
     const handleAddListing = (e) =>{
         e.preventDefault();
+        const selectedCategory = e.target.category.value;
         const formdata = {
             name: e.target.name.value,
             category: e.target.category.value,
-            price: e.target.price.value,
+            price: selectedCategory === "Pets" ? 0 : e.target.price.value,
             location: e.target.location.value,
             description: e.target.description.value,
             image: e.target.image.value,
@@ -47,7 +49,7 @@ const AddListing = () => {
 
     }
     return (
-        <div className="max-w-2xl mx-auto my-20 bg-orange-50 p-8 rounded-2xl shadow-xl">
+        <div className="max-w-2xl mx-auto my-20 border border-orange-50 backdrop-blur-xs p-8 rounded-2xl shadow-xl">
       <h2 className="text-2xl font-semibold bg-linear-to-r from-orange-600 to-orange-300 text-transparent bg-clip-text mb-6 text-center">
         Add New Listing
       </h2>
@@ -71,12 +73,13 @@ const AddListing = () => {
           <select
           name='category'
           required
+          onChange={(e) => setCategory(e.target.value)}
           className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400">
-            <option value="">Select Category</option>
-            <option value="Pets">Pets</option>
-            <option value="Food">Pet Food</option>
-            <option value="Accessories">Accessories</option>
-            <option value="Care Products">Pet Care Products</option>
+            <option className='text-gray-500' value="">Select Category</option>
+            <option className='text-gray-500' value="Pets">Pets</option>
+            <option className='text-gray-500' value="Food">Pet Food</option>
+            <option className='text-gray-500' value="Accessories">Accessories</option>
+            <option className='text-gray-500' value="Care Products">Pet Care Products</option>
           </select>
         </div>
 
@@ -86,8 +89,13 @@ const AddListing = () => {
           name='price'
           required
             type="number"
-            placeholder="Enter price (0 if pet)"
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+             placeholder="Enter price (0 if pet)"
+             value={category === "Pets" ? 0 : undefined}
+             disabled={category === "Pets"}
+             className={`w-full px-4 py-2 border rounded-lg ${category === "Pets"
+        ? " cursor-not-allowed"
+        : "focus:outline-none focus:ring-2 focus:ring-orange-400"
+    }`}
           />
         </div>
         <div>
@@ -145,7 +153,7 @@ const AddListing = () => {
             type="email"
             value={user.email}
             readOnly
-            className="w-full px-4 py-2 border rounded-lg bg-gray-100 cursor-not-allowed"
+            className="w-full px-4 py-2 border rounded-lg cursor-not-allowed"
           />
         </div>
 

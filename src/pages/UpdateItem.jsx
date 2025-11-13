@@ -57,7 +57,7 @@ useEffect(()=>{
 
     }
     return (
-        <div className="max-w-2xl mx-auto my-20 bg-orange-50 p-8 rounded-2xl shadow-xl">
+        <div className="max-w-2xl mx-auto my-20 border border-orange-50 backdrop-blur-xs p-8 rounded-2xl shadow-xl">
       <h2 className="text-2xl font-semibold bg-linear-to-r from-orange-600 to-orange-300 text-transparent bg-clip-text mb-6 text-center">
         Update Your Details
       </h2>
@@ -83,11 +83,11 @@ useEffect(()=>{
           required
           defaultValue={data.category}
           className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400">
-            <option value="">Select Category</option>
-            <option value="Pets">Pets</option>
-            <option value="Food">Pet Food</option>
-            <option value="Accessories">Accessories</option>
-            <option value="Care Products">Pet Care Products</option>
+            <option className='text-gray-500' value="">Select Category</option>
+            <option className='text-gray-500' value="Pets">Pets</option>
+            <option className='text-gray-500' value="Food">Pet Food</option>
+            <option className='text-gray-500' value="Accessories">Accessories</option>
+            <option className='text-gray-500' value="Care Products">Pet Care Products</option>
           </select>
         </div>
 
@@ -156,7 +156,7 @@ useEffect(()=>{
           required
             type="email"
             defaultValue={data.email}
-            className="w-full px-4 py-2 border rounded-lg bg-gray-100"
+            className="w-full px-4 py-2 border rounded-lg"
           />
         </div>
 

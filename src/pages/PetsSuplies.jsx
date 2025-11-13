@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData, useParams } from 'react-router';
+import { Link, useLoaderData, useParams } from 'react-router';
 import Card from './Card';
 import Loading from './Loading';
 
@@ -34,7 +34,7 @@ const PetsSuplies = () => {
     setCategory(selectedCategory);
     setLoading(true);
 
-    if (!selectedCategory || selectedCategory === "") {
+    if (!selectedCategory || selectedCategory == "") {
       setSearchItems(items);
       setLoading(false);
       return;
@@ -63,8 +63,9 @@ const PetsSuplies = () => {
         className="text-center text-3xl font-bold mt-10 bg-linear-to-r from-orange-600 to-orange-200 text-transparent bg-clip-text" >
         {category ? `${category.toUpperCase()} Items` : "All Pets / Supplies"}
       </h1>
-        <form onSubmit={handleSearch} className='flex justify-center gap-2 mt-5'>
-          <div className='flex'>
+        {
+          routeCategory ? '' : <form onSubmit={handleSearch} className='md:flex justify-center gap-2 mt-5'>
+          <div className='flex mb-2'>
             <label className="input">
   <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <g
@@ -96,7 +97,8 @@ const PetsSuplies = () => {
         </select>
 
         </form>
-      <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-6 w-11/12 mx-auto my-10">
+        }
+      <div className="grid md:grid-cols-3 sm:grid-cols-1 gap-6 w-11/12 mx-auto mt-10">
         {searchItems.map((item) => (
           <div
             key={item._id}
@@ -106,6 +108,13 @@ const PetsSuplies = () => {
             <Card item ={item}></Card>
           </div>
         ))}
+      </div>
+      <div className="text-center mb-5">
+        <Link to="/">
+          <button className="btn bg-orange-400 hover:bg-linear-to-r from-orange-700 to-orange-500 text-white font-semibold  rounded-2xl py-2 hover:scale-105 transition ease-in-out">
+            ← Go Back
+          </button>
+        </Link>
       </div>
     </div>
     );

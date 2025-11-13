@@ -28,7 +28,7 @@ const Details = () => {
                 phone: e.target.phone.value,
                 notes: e.target.notes.value
             }
-            fetch('http://localhost:3000/orders', {
+            fetch('https://paw-mart-a10-server.vercel.app/orders', {
                 method: "POST",
                 headers:{
                     "Content-Type": "application/json",
@@ -54,7 +54,7 @@ const Details = () => {
         }
     
     return (
-        <div className="max-w-5xl mx-auto px-6 py-16 mt-10">
+        <div className="max-w-5xl mx-auto px-6 py-16 mt-10 animate__animated animate__fadeInDown">
 
       <div className="flex flex-col md:flex-row gap-10 items-start">
         <img

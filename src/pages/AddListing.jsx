@@ -24,7 +24,7 @@ const AddListing = () => {
             email: e.target.email.value,
             date: e.target.date.value
         }
-        fetch('http://localhost:3000/pets', {
+        fetch('https://paw-mart-a10-server.vercel.app/pets', {
             method: "POST",
             headers:{
                 "Content-Type": "application/json",
@@ -49,7 +49,7 @@ const AddListing = () => {
 
     }
     return (
-        <div className="max-w-2xl mx-auto my-20 border border-orange-50 backdrop-blur-xs p-8 rounded-2xl shadow-xl">
+        <div className="animate__animated animate__fadeIn max-w-2xl mx-auto my-20 border border-orange-50 backdrop-blur-xs p-8 rounded-2xl shadow-xl">
       <h2 className="text-2xl font-semibold bg-linear-to-r from-orange-600 to-orange-300 text-transparent bg-clip-text mb-6 text-center">
         Add New Listing
       </h2>

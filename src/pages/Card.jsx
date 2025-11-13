@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 const Card = ({item}) => {
     return (
-        <div className="max-w-sm border border-orange-50 backdrop-blur-xs  rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition hover:scale-105  ease-in-out duration-700 mb-8">
+        <div className="max-w-sm border border-orange-50 backdrop-blur-xs  rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition hover:scale-105  ease-in-out duration-700 mb-8 animate__animated animate__fadeInDown">
   <img
     src={item.image}
     alt={item.name}

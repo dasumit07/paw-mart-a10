@@ -20,7 +20,7 @@ const PetsSuplies = () => {
           e.preventDefault();
           const searchText = e.target.search.value;
           setLoading(true)
-          fetch(`http://localhost:3000/search?search=${searchText}`)
+          fetch(`https://paw-mart-a10-server.vercel.app/search?search=${searchText}`)
           .then(res => res.json())
           .then(data =>{
             setSearchItems(data)
@@ -40,7 +40,7 @@ const PetsSuplies = () => {
       return;
     }
 
-    fetch(`http://localhost:3000/category?category=${selectedCategory}`)
+    fetch(`https://paw-mart-a10-server.vercel.app/category?category=${selectedCategory}`)
       .then((res) => res.json())
       .then((data) => {
         setSearchItems(data);

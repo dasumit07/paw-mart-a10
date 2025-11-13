@@ -72,15 +72,15 @@ setErrorPassword('');
         });
     }
     return (
-        <div className="flex items-center justify-center min-h-screen bg-blue-50 mt-15">
-      <div className="bg-orange-50 shadow-lg rounded-2xl p-8 w-full max-w-md my-8 hover:scale-105 transition ease-in-out duration-1000 animate__animated animate__fadeInDown">
-        <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
+        <div className="flex items-center justify-center min-h-screen mt-15">
+      <div className="border border-orange-50 backdrop-blur-xs shadow-lg rounded-2xl p-8 w-full max-w-md my-8 hover:scale-105 transition ease-in-out duration-1000 animate__animated animate__fadeInDown">
+        <h1 className="text-3xl font-bold text-center text-gray-400 mb-6">
           Login to <span className="bg-linear-to-r from-orange-400 to-orange-300 text-transparent bg-clip-text">PawMart</span>
         </h1>
 
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-gray-700 font-semibold mb-2">
+            <label className="block text-gray-400 font-semibold mb-2">
               Email
             </label>
             <input
@@ -95,7 +95,7 @@ setErrorPassword('');
           </div>
 
           <div className="mb-4 relative">
-            <label className="block text-gray-700 font-semibold mb-2">
+            <label className="block text-gray-400 font-semibold mb-2">
               Password
             </label>
             <input
@@ -139,7 +139,7 @@ setErrorPassword('');
           <span className=" font-medium">Continue with Google</span>
         </button>
 
-        <p className="text-center text-sm text-gray-600 mt-6">
+        <p className="text-center text-sm text-gray-400 mt-6">
           Don’t have an account?{" "}
           <Link to="/signup" className="text-blue-600 font-semibold hover:underline ">
             Register

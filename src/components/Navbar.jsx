@@ -9,7 +9,7 @@ import { LuLogIn } from 'react-icons/lu';
 import { MoonLoader } from 'react-spinners';
 import { AuthContext } from '../context/Authcontext';
 import Swal from 'sweetalert2';
-import { MdOutlineDriveFileRenameOutline } from 'react-icons/md';
+
 
 
 const Navbar = () => {
@@ -145,7 +145,7 @@ const Navbar = () => {
     </div> : <Link to={"/login"}>
     <button className="btn bg-orange-400 hover:bg-linear-to-r from-orange-700 to-orange-500 text-white font-semibold  hover:scale-105 transition ease-in-out rounded-2xl">
       <LuLogIn />
-        Login / Register
+        Login
         </button></Link> }
         <label className="toggle text-base-content">
   <input

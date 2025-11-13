@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useLoaderData, useNavigate } from 'react-router';
+import { Link, useLoaderData, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 
 const UpdateItem = () => {
@@ -28,7 +28,7 @@ useEffect(()=>{
   denyButtonText: `Don't save`
 }).then((result) => {
   if (result.isConfirmed) {
-    fetch(`http://localhost:3000/pets/${data._id}`, {
+    fetch(`https://paw-mart-a10-server.vercel.app/pets/${data._id}`, {
             method: "PUT",
             headers:{
                 "Content-Type": "application/json",
@@ -169,6 +169,13 @@ useEffect(()=>{
           </button>
         </div>
       </form>
+      <div className="text-center mt-12">
+        <Link to="/myListings">
+          <button className="btn bg-orange-400 hover:bg-linear-to-r from-orange-700 to-orange-500 text-white font-semibold  rounded-2xl py-2 hover:scale-105 transition ease-in-out">
+            ← Go Back
+          </button>
+        </Link>
+      </div>
     </div>
     );
 };

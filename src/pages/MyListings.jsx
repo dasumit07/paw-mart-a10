@@ -11,7 +11,7 @@ const MyListings = () => {
         },[]);
 
     useEffect(()=>{
-        fetch(`http://localhost:3000/myListings?email=${user.email}`)
+        fetch(`https://paw-mart-a10-server.vercel.app/myListings?email=${user.email}`)
         .then(res => res.json())
         .then(data => {
             setListings(data);
@@ -31,7 +31,7 @@ const MyListings = () => {
   confirmButtonText: "Yes, delete it!"
 }).then((result) => {
   if (result.isConfirmed) {
-fetch(`http://localhost:3000/pets/${id}`, {
+fetch(`https://paw-mart-a10-server.vercel.app/pets/${id}`, {
             method: "DELETE",
            
         })
@@ -53,12 +53,12 @@ fetch(`http://localhost:3000/pets/${id}`, {
 });
     }
     return (
-        <div className="max-w-6xl mx-auto px-4 py-10 mt-15">
+        <div className="max-w-6xl mx-auto px-4 py-10 mt-15 animate__animated animate__fadeInLeft">
       <h2 className="text-3xl font-bold text-center mb-8 bg-linear-to-r from-orange-600 to-orange-300 text-transparent bg-clip-text">
         🐾 My Listings
       </h2>
 
-      <div className="overflow-x-auto border border-orange-50 backdrop-blur-xs shadow-lg rounded-2xl">
+      <div className="overflow-x-auto  border border-orange-50 backdrop-blur-xs shadow-lg rounded-2xl">
         <table className="min-w-full table-auto text-sm text-gray-700">
           <thead className="bg-linear-to-r from-orange-600 to-orange-300 text-white uppercase text-sm">
             <tr>

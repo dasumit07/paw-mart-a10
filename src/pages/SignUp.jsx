@@ -84,15 +84,15 @@ const Signup = () => {
         });
     }
     return (
-        <div className="flex items-center justify-center min-h-screen bg-blue-50 mt-15">
-      <div className="bg-orange-50 shadow-lg rounded-2xl p-8 my-8 w-full max-w-md hover:scale-105 transition ease-in-out duration-1000 animate__animated animate__fadeInDown">
-        <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
+        <div className="flex items-center justify-center min-h-screen mt-15">
+      <div className="border border-orange-50 backdrop-blur-xs shadow-lg rounded-2xl p-8 my-8 w-full max-w-md hover:scale-105 transition ease-in-out duration-1000 animate__animated animate__fadeInDown">
+        <h1 className="text-3xl font-bold text-center text-gray-400 mb-6">
           Create an Account
         </h1>
 
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-gray-700 font-semibold mb-2">
+            <label className="block text-gray-400 font-semibold mb-2">
               Full Name
             </label>
             <input
@@ -106,7 +106,7 @@ const Signup = () => {
           </div>
 
           <div className="mb-4">
-            <label className="block text-gray-700 font-semibold mb-2">
+            <label className="block text-gray-400 font-semibold mb-2">
               Photo URL
             </label>
             <input
@@ -119,7 +119,7 @@ const Signup = () => {
           </div>
 
           <div className="mb-4">
-            <label className="block text-gray-700 font-semibold mb-2">
+            <label className="block text-gray-400 font-semibold mb-2">
               Email
             </label>
             <input
@@ -132,7 +132,7 @@ const Signup = () => {
           </div>
 
           <div className="mb-4 relative">
-            <label className="block text-gray-700 font-semibold mb-2">
+            <label className="block text-gray-400 font-semibold mb-2">
               Password
             </label>
             <input
@@ -169,7 +169,7 @@ const Signup = () => {
           <span className=" font-medium">Sign up with Google</span>
         </button>
 
-        <p className="text-center text-sm text-gray-600 mt-6">
+        <p className="text-center text-sm text-gray-400 mt-6">
           Already have an account?{" "}
           <Link to="/login" className="text-blue-600 font-semibold hover:underline">
             Login

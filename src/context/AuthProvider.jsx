@@ -4,8 +4,9 @@ import { onAuthStateChanged } from 'firebase/auth';
 
 
 import { auth } from '../firebase/firebase.config';
-import { AuthContext } from './Authcontext';
+
 import Loading from '../pages/Loading';
+import { AuthContext } from './Authcontext';
 
 const AuthProvider = ({children}) => {
 

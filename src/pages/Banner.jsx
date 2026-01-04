@@ -5,7 +5,7 @@ import "swiper/css/autoplay";
 import { Autoplay } from "swiper/modules";
 const Banner = () => {
     return (
-        <div className="animate__animated animate__fadeInDown relative h-[80vh] w-11/12 mx-auto rounded-3xl overflow-hidden shadow-lg mt-20">
+        <div className="animate__animated animate__fadeInDown relative h-[80vh]  overflow-hidden shadow-lg mt-20">
       <Swiper
         modules={[Autoplay]}
         autoplay={{ delay: 3000 }}

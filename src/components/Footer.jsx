@@ -5,59 +5,66 @@ import { MdEmail } from 'react-icons/md';
 import { Link } from 'react-router';
 
 const Footer = () => {
-    return (
-        <footer className="footer sm:footer-horizontal bg-linear-to-r from-orange-600 to-orange-50 text-neutral-content p-10">
-  <aside>
-    <Link to={"/"} ><IoPawSharp className='text-5xl'></IoPawSharp></Link>
-    <p className='text-black md:text-white'>
-        <span className='text-2xl font-semibold mb-2 '>PawMart</span>
-        <br />
-      <span>“PawMart connects local pet owners and buyers for adoption and pet
-care products.”</span>
-      <br />
-      <span className='flex gap-1 items-center mb-5'><MdEmail /><span className='font-semibold'>Contact us</span>-  pawmart@gmail.com</span>
-      Copyright © {new Date().getFullYear()} - All right reserved by PawMart Industries Ltd
-    </p>
-  </aside>
-  <nav>
-    <h6 className="footer-title text-black">Social</h6>
-    <div className="grid grid-flow-col gap-4">
-      <a>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          className="fill-current hover:scale-110 text-black transition ease-in-out hover:text-blue-500">
-          <BsTwitterX size={25} />
-        </svg>
-      </a>
-      <a>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          className="fill-current hover:scale-110 text-black transition ease-in-out hover:text-red-500">
-          <path
-            d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
-        </svg>
-      </a>
-      <a>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          className="fill-current hover:scale-110 text-black transition ease-in-out hover:text-blue-700">
-          <path
-            d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
-        </svg>
-      </a>
-    </div>
-  </nav>
-</footer>
-    );
+  return (
+    <footer className="footer sm:footer-horizontal bg-linear-to-r from-orange-400 to-orange-50 text-neutral-content p-10">
+      <aside>
+        <Link to={"/"} ><IoPawSharp className='text-5xl'></IoPawSharp></Link>
+        <p className='text-black md:text-white'>
+          <span className='text-2xl font-semibold mb-2 '>PawMart</span>
+          <br />
+          <span>“PawMart connects local pet owners and buyers for adoption and pet
+            care products.”</span>
+          <br />
+          <span className='flex gap-1 items-center mb-5'><MdEmail /><span className='font-semibold'>Contact us</span>-  pawmart@gmail.com</span>
+          Copyright © {new Date().getFullYear()} - All right reserved by PawMart Industries Ltd
+        </p>
+      </aside>
+      <nav>
+        <h6 className="footer-title text-black">Social</h6>
+        <div className="grid grid-flow-col gap-4">
+          <a href="https://twitter.com">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              className="fill-current hover:scale-110 text-black transition ease-in-out hover:text-blue-500">
+              <BsTwitterX size={25} />
+            </svg>
+          </a>
+          <a href="https://youtube.com">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              className="fill-current hover:scale-110 text-black transition ease-in-out hover:text-red-500">
+              <path
+                d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
+            </svg>
+          </a>
+          <a href="https://facebook.com">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              className="fill-current hover:scale-110 text-black transition ease-in-out hover:text-blue-700">
+              <path
+                d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
+            </svg>
+          </a>
+        </div>
+        <h6 className="footer-title text-black">Useful Links</h6>
+        <ul>
+          <li><Link to="/terms-and-conditions" className="text-black font-semibold hover:underline">Terms & Conditions</Link></li>
+          <li><Link to="/privacy-policy" className="text-black font-semibold hover:underline">Privacy Policy</Link></li>
+          <li><Link to="/about-us" className="text-black font-semibold hover:underline">About Us</Link></li>
+          <li><Link to="/contact-us" className="text-black font-semibold hover:underline">Contact Us</Link></li>
+        </ul>
+      </nav>
+    </footer>
+  );
 };
 
 export default Footer;

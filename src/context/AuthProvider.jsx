@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged, updateProfile } from 'firebase/auth';
 
 
 import { auth } from '../firebase/firebase.config';
@@ -12,12 +12,19 @@ const AuthProvider = ({children}) => {
 
 const [user, setUser]= useState(null);
 const [loading, setLoading] = useState(true);
+const updateUserProfile = (name, photoURL) => {
+  return updateProfile(auth.currentUser, {
+    displayName: name,
+    photoURL: photoURL,
+  });
+};
 
 const authInfo = {
     user,
     setUser,
     loading,
-    setLoading
+    setLoading,
+    updateUserProfile
 };
 
 useEffect(() => {

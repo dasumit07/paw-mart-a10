@@ -6,7 +6,7 @@ const Category = () => {
     
     return (
         <div className='mt-5 w-11/12 mx-auto '>
-            <div className='App text-center p-2 text-3xl  rounded-2xl '>
+            <div className='App text-center p-2 text-2xl  rounded-2xl '>
             <h1 style={{ paddingTop: '5rem', margin: 'auto 0', fontWeight: 'normal' }}>
         Explore By Category{' '}
         <span style={{ color: 'Orange', fontWeight: 'bold' }}>

@@ -45,7 +45,7 @@ useEffect(()=>{
                       showConfirmButton: false,
                       timer: 1500
                     });
-                    navigate("/myListings")
+                    navigate("/dashboard/myListings")
         })
         .catch(err =>{
             console.log(err)
@@ -170,7 +170,7 @@ useEffect(()=>{
         </div>
       </form>
       <div className="text-center mt-12">
-        <Link to="/myListings">
+        <Link to="/dashboard/myListings">
           <button className="btn bg-orange-400 hover:bg-linear-to-r from-orange-700 to-orange-500 text-white font-semibold  rounded-2xl py-2 hover:scale-105 transition ease-in-out">
             ← Go Back
           </button>

@@ -2,15 +2,18 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../context/Authcontext';
 import { Link } from 'react-router';
 import Swal from 'sweetalert2';
+import Loading from '../pages/Loading';
 
 const MyListings = () => {
-    const {user, setLoading} = useContext(AuthContext);
+    const {user} = useContext(AuthContext);
     const [Listings, setListings] = useState([]);
+    const [loading, setLoading] = useState(false);
     useEffect(()=>{
             document.title = "My Listings | PawMart"
         },[]);
 
     useEffect(()=>{
+        setLoading(true);
         fetch(`https://paw-mart-a10-server.vercel.app/myListings?email=${user.email}`)
         .then(res => res.json())
         .then(data => {
@@ -52,15 +55,18 @@ fetch(`https://paw-mart-a10-server.vercel.app/pets/${id}`, {
   }
 });
     }
+    if(loading){
+        return  <Loading></Loading>
+    }
     return (
-        <div className="max-w-6xl mx-auto px-4 py-10 mt-15 animate__animated animate__fadeInLeft">
+        <div className="max-w-6xl mx-auto px-4 py-10  animate__animated animate__fadeIn">
       <h2 className="text-3xl font-bold text-center mb-8 bg-linear-to-r from-orange-600 to-orange-300 text-transparent bg-clip-text">
         🐾 My Listings
       </h2>
 
       <div className="overflow-x-auto  border border-orange-50 backdrop-blur-xs shadow-lg rounded-2xl">
         <table className="min-w-full table-auto text-sm text-gray-700">
-          <thead className="bg-linear-to-r from-orange-600 to-orange-300 text-white uppercase text-sm">
+          <thead className="bg-linear-to-r from-gray-600 to-gray-300 text-white uppercase text-sm">
             <tr>
               <th className="py-3 px-4 text-left">Image</th>
               <th className="py-3 px-4 text-left">Name</th>
@@ -108,7 +114,7 @@ fetch(`https://paw-mart-a10-server.vercel.app/pets/${id}`, {
                   colSpan="7"
                   className="text-center py-6 text-gray-500 font-medium"
                 >
-                  No listings found 😿
+                  No listings found 
                 </td>
               </tr>
             )}

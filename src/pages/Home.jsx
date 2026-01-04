@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Banner from './Banner';
@@ -6,6 +7,11 @@ import RecentListing from './RecentListing';
 import AdoptFromPawmart from './AdoptFromPawmart';
 import MeetHero from './MeetHero';
 import { useLoaderData } from 'react-router';
+
+import Reviews from './Reviews';
+import Statistics from './Statistics';
+import BlogSection from './BlogSection';
+import FAQ from './FAQ';
 
 const Home = () => {
   const data = useLoaderData();
@@ -61,6 +67,38 @@ const Home = () => {
         viewport={{ once: true, amount: 0.2 }}
       >
         <MeetHero></MeetHero>
+      </motion.div>
+      <motion.div
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <Reviews></Reviews>
+      </motion.div>
+      <motion.div
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <Statistics></Statistics>
+      </motion.div>
+      <motion.div
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <BlogSection></BlogSection>
+      </motion.div>
+      <motion.div
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <FAQ></FAQ>
       </motion.div>
     </div>
   );

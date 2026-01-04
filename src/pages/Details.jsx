@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { Link, useLoaderData, useNavigate } from 'react-router';
 import { AuthContext } from '../context/Authcontext';
 import Swal from 'sweetalert2';
+import { FaBangladeshiTakaSign } from 'react-icons/fa6';
 
 const Details = () => {
     const data = useLoaderData()
@@ -16,13 +17,14 @@ const Details = () => {
     data.category.toLowerCase() === "pets"
       ? 1
       : Number(e.target.quantity.value) || 1;
+      const price = quantity == 1 ? data.price : data.price * quantity;
             const formdata = {
                 buyer_name: e.target.buyer_name.value,
                 email: e.target.email.value,
                 product_id: e.target.product_id.value,
                 product_name: e.target.product_name.value,
                 quantity: quantity,
-                price: e.target.price.value,
+                price: price,
                 address: e.target.address.value,
                 date: e.target.date.value,
                 phone: e.target.phone.value,
@@ -36,12 +38,11 @@ const Details = () => {
                 body: JSON.stringify(formdata)
             })
             .then(res => res.json())
-            .then(data => {
-                console.log(data)
+            .then(() => {
                 Swal.fire({
                           position: "center",
                           icon: "success",
-                          title: "🎉 Your Order has been Confirmed",
+                          title: `${data.category == "Pets" ? "Adoption" : "Order"} placed successfully!`,
                           showConfirmButton: false,
                           timer: 2000
                         });
@@ -52,6 +53,16 @@ const Details = () => {
             })
     
         }
+        const handleNotUser = () =>{
+if (!user) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: `${data.category == "Pets" ? "You need to be logged in to adopt a pet." : "You need to be logged in to place an order."}`
+            });
+            return navigate("/login");
+        }
+        };
     
     return (
         <div className="max-w-5xl mx-auto px-6 py-16 mt-10 animate__animated animate__fadeInDown">
@@ -64,53 +75,68 @@ const Details = () => {
 
         <div className="flex-1">
             
-          <h1 className="text-3xl font-bold bg-linear-to-r from-orange-400 to-orange-300 text-transparent bg-clip-text mb-3">
-            Name: {data.name}
+          <h1 className="text-2xl  mb-3">
+            Name: <span className='font-bold bg-linear-to-r from-orange-400 to-orange-300 text-transparent bg-clip-text'>{data.name}</span>
           </h1>
 
-          <p className="text-gray-400 mb-2">
-            <span className="font-semibold">Category:</span> {data.category}
+          <p className=" mb-2">
+            <span className="font-semibold">Category:</span> <span className='text-gray-400 '>{data.category}</span>
           </p>
-          <p className="text-gray-400 mb-2">
-            <span className="font-semibold">Owner’s Email:</span> {data.email} 
+          <p className="mb-2">
+            <span className="font-semibold">Owner’s Email:</span> <span className='text-gray-400 '>{data.email}</span> 
           </p>
-          <p className="text-gray-400 mb-4">
-            <span className="font-semibold">Description:</span> {data.description}
+          <p className="mb-4">
+            <span className="font-semibold">Description:</span> <span className='text-gray-400 '>{data.description}</span>
           </p>
 
           <p className="text-gray-700 mb-5 leading-relaxed"></p>
 
           <div className="flex items-center justify-between mb-6">
-            <p className="text-lg font-semibold bg-linear-to-r from-orange-400 to-orange-300 text-transparent bg-clip-text">
-              Location: {data.location}
+            <p className="text-lg font-semibold ">
+              Location: <span className='bg-linear-to-r from-orange-400 to-orange-300 text-transparent bg-clip-text'>{data.location}</span>
             </p>
-            <p className="text-lg font-semibold text-yellow-500">
-              Price: {data.price}
+            <div className='flex items-center gap-1'><p className="text-lg font-semibold ">
+              Price: <span className='text-yellow-500'>{data.price}</span>
             </p>
+             <span className='text-yellow-500'><FaBangladeshiTakaSign /></span></div>
           </div>
          
            
-<button
-  className="btn w-full bg-orange-400 hover:bg-linear-to-r from-orange-700 to-orange-500 text-white font-semibold rounded-2xl py-2 hover:scale-105 transition ease-in-out"
-  onClick={() => document.getElementById('my_modal_5').showModal()}
+{
+  data.category == "Pets" ? <button
+  className="btn w-full bg-orange-400 hover:bg-linear-to-r from-orange-700 to-orange-500 text-white font-semibold rounded-2xl py-2 hover:scale-102 transition ease-in-out duration-500"
+  onClick={() => {
+    handleNotUser();
+    document.getElementById('my_modal_5').showModal();}}
 >
-  Adopt / Order Now
+  Adopt Now
+</button> : <button
+  className="btn w-full bg-orange-400 hover:bg-linear-to-r from-orange-700 to-orange-500 text-white font-semibold rounded-2xl py-2 hover:scale-102 transition ease-in-out duration-500"
+  onClick={() => {
+    handleNotUser();
+    document.getElementById('my_modal_5').showModal();
+  }}
+>
+  Order Now
 </button>
+}
 
 <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
   <div className="modal-box max-w-lg">
-    <h3 className="font-bold text-2xl text-center mb-6 bg-linear-to-r from-orange-600 to-orange-300 text-transparent bg-clip-text">
+    {
+      data.category == "Pets" ? <h3 className="font-bold text-center text-lg bg-linear-to-r from-orange-600 to-orange-300 text-transparent bg-clip-text">Adopt : <span className='text-gray-500'>{data.name}</span></h3> : <h3 className="font-bold text-2xl text-center mb-6 bg-linear-to-r from-orange-600 to-orange-300 text-transparent bg-clip-text">
       Place Your Order 🐾
     </h3>
+    }
 
     <form onSubmit={handleOrder} method="dialog" className="space-y-4">
      
       <div>
-        <label className="block bg-linear-to-r from-orange-600 to-orange-300 text-transparent bg-clip-text font-medium mb-2">Buyer Name</label>
+        <label className="block bg-linear-to-r from-orange-600 to-orange-300 text-transparent bg-clip-text font-medium mb-2"> Name</label>
         <input
           type="text"
           name='buyer_name'
-          value={user.displayName}
+          value={user?.displayName}
           readOnly
           className="w-full px-4 py-2 border rounded-lg  cursor-not-allowed"
         />
@@ -122,7 +148,7 @@ const Details = () => {
         <input
           type="email"
           name='email'
-          value={user.email}
+          value={user?.email}
           readOnly
           className="w-full px-4 py-2 border rounded-lg  cursor-not-allowed"
         />
@@ -247,7 +273,7 @@ const Details = () => {
 
       <div className="text-center mt-12">
         <Link to="/pets">
-          <button className="btn bg-orange-400 hover:bg-linear-to-r from-orange-700 to-orange-500 text-white font-semibold  rounded-2xl py-2 hover:scale-105 transition ease-in-out">
+          <button className="btn bg-orange-400 hover:bg-linear-to-r from-orange-700 to-orange-500 text-white font-semibold  rounded-2xl py-2 hover:scale-102 transition ease-in-out duration-500">
             ← Go Back
           </button>
         </Link>
